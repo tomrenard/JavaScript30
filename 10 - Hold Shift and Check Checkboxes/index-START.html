@@ -96,6 +96,32 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('.inbox input');
+  const tasks = document.querySelectorAll('.inbox p');
+
+  let lastChecked;
+
+  function handleCheck(e) {
+    let inBetween = false;
+    if (e.shiftKey && this.checked) {
+      checkboxes.forEach(checkbox => {
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+        }
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+  lastChecked = this;
+  }
+
+  function removeCheck(e) {
+    checkboxes.checked = false;
+  }
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+tasks.forEach(task => task.addEventListener('click', removeCheck));
 </script>
 </body>
 </html>
