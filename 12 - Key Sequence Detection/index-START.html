@@ -7,6 +7,20 @@
 </head>
 <body>
 <script>
+  const keys_pressed = [];
+  const code = 'tom';
+
+  function secretAnimation(e) {
+    keys_pressed.push(e.key);
+    keys_pressed.splice(-code.length - 1, keys_pressed.length - code.length);
+    let secret_code = keys_pressed.join('');
+    console.log(secret_code);
+    if (secret_code === code) {
+      cornify_add();
+    };
+  }
+
+  window.addEventListener('keyup', secretAnimation);
 </script>
 </body>
 </html>
