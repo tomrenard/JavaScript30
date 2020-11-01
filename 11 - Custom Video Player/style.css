@@ -104,6 +104,13 @@ body {
   flex-basis: 50%;
 }
 
+.fully {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 /* unholy css to style input type="range" */
 
 input[type=range] {
