@@ -22,6 +22,8 @@
     <form class="add-items">
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
+      <input class='tick' type="button" value="Tick all">
+      <input class='untick' type="button" value="Untick">
     </form>
   </div>
 
@@ -29,6 +31,8 @@
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [];
+  const tick = document.querySelector('.tick');
+  const untick = document.querySelector('.untick');
 
   function addItem(e) {
     e.preventDefault();
@@ -64,8 +68,22 @@
     populateList(items, itemsList);
   }
 
+  function TickAll(e) {
+   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+   checkboxes.forEach ( checkbox => {
+    if (!checkbox.checked)
+      checkbox.checked;
+  });
+  }
+
+  function UntickAll(e) {
+  }
+
   addItems.addEventListener('submit', addItem);
   itemsList.addEventListener('click', toggleDone);
+  tick.addEventListener('click', TickAll);
+  // untick.addEventListener('click', UntickAll);
+
 
   populateList(items, itemsList);
 
